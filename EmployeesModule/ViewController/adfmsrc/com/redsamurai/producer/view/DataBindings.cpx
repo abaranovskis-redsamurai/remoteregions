@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.redsamurai.producer.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/fragments/emplsView.jsff" usageId="com_redsamurai_producer_view_emplsViewPageDef"/>
+    <page path="/testEmpls.jsf" usageId="com_redsamurai_producer_view_testEmplsPageDef"/>
+    <page path="/WEB-INF/flows/empls-flow.xml#empls-flow@ExecuteWithParams"
+          usageId="com_redsamurai_producer_view_empls_flow_empls_flow_ExecuteWithParamsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_redsamurai_producer_view_emplsViewPageDef"
+          path="com.redsamurai.producer.view.pageDefs.fragments.emplsViewPageDef"/>
+    <page id="com_redsamurai_producer_view_testEmplsPageDef"
+          path="com.redsamurai.producer.view.pageDefs.testEmplsPageDef"/>
+    <page id="com_redsamurai_producer_view_empls_flow_empls_flow_ExecuteWithParamsPageDef"
+          path="com.redsamurai.producer.view.pageDefs.fragments.empls_flow_empls_flow_ExecuteWithParamsPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="HrModuleDataControl" Package="com.redsamurai.producer.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HrModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

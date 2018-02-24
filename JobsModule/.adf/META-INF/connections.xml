@@ -1,0 +1,37 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="HrDS" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="HrDS" xmlns="">
+    <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
+    <RefAddresses>
+      <StringRefAddr addrType="oraDriverType">
+        <Contents>thin</Contents>
+      </StringRefAddr>
+      <StringRefAddr addrType="hostname">
+        <Contents>127.0.0.1</Contents>
+      </StringRefAddr>
+      <SecureRefAddr addrType="password"/>
+      <StringRefAddr addrType="subtype">
+        <Contents>oraJDBC</Contents>
+      </StringRefAddr>
+      <StringRefAddr addrType="port">
+        <Contents>1521</Contents>
+      </StringRefAddr>
+      <StringRefAddr addrType="serviceName">
+        <Contents>XE</Contents>
+      </StringRefAddr>
+      <StringRefAddr addrType="user">
+        <Contents>hr</Contents>
+      </StringRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="RemoteRegionConn" className="oracle.adf.controller.rc.remote.RemoteTaskFlowConnection" xmlns="">
+    <Factory className="oracle.adf.controller.rc.remote.RemoteTaskFlowConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="RemoteRegionConn">
+        <Contents>
+          <remoteTaskFlowProducer name="RemoteRegionConn" queryURL="http://130.30.20.10:7001/employees/rtfquery"
+                                  invokeURL="http://130.30.20.10:7001/employees/rr" alwaysSendUserIdentity="false"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+</References>

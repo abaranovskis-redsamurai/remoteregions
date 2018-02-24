@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="empls-flow">
+    <default-activity>SearchByJobId</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>jobIdParam</name>
+      <value>#{pageFlowScope.jobIdParam}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <view id="emplsView">
+      <page>/fragments/emplsView.jsff</page>
+    </view>
+    <router id="SearchByJobId">
+      <case id="__7">
+        <expression>#{pageFlowScope.jobIdParam != null}</expression>
+        <outcome>filter</outcome>
+      </case>
+      <default-outcome>direct</default-outcome>
+    </router>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>SearchByJobId</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>direct</from-outcome>
+        <to-activity-id>emplsView</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>filter</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>emplsView</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+    <visibility>
+      <remote-invocable/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

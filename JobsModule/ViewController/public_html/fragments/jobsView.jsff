@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelBox text="Jobs" id="pb1" showDisclosure="false">
+      <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.JobId.inputValue}" label="#{bindings.JobId.hints.label}"
+                      required="#{bindings.JobId.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.JobId.hints.displayWidth}" maximumLength="#{bindings.JobId.hints.precision}"
+                      shortDesc="#{bindings.JobId.hints.tooltip}" id="it1">
+          <f:validator binding="#{bindings.JobId.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.JobTitle.inputValue}" label="#{bindings.JobTitle.hints.label}"
+                      required="#{bindings.JobTitle.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.JobTitle.hints.displayWidth}"
+                      maximumLength="#{bindings.JobTitle.hints.precision}"
+                      shortDesc="#{bindings.JobTitle.hints.tooltip}" id="it2">
+          <f:validator binding="#{bindings.JobTitle.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.MinSalary.inputValue}" label="#{bindings.MinSalary.hints.label}"
+                      required="#{bindings.MinSalary.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.MinSalary.hints.displayWidth}"
+                      maximumLength="#{bindings.MinSalary.hints.precision}"
+                      shortDesc="#{bindings.MinSalary.hints.tooltip}" id="it3">
+          <f:validator binding="#{bindings.MinSalary.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.MinSalary.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.MaxSalary.inputValue}" label="#{bindings.MaxSalary.hints.label}"
+                      required="#{bindings.MaxSalary.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.MaxSalary.hints.displayWidth}"
+                      maximumLength="#{bindings.MaxSalary.hints.precision}"
+                      shortDesc="#{bindings.MaxSalary.hints.tooltip}" id="it4">
+          <f:validator binding="#{bindings.MaxSalary.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.MaxSalary.format}"/>
+        </af:inputText>
+        <f:facet name="footer">
+          <af:panelGroupLayout layout="horizontal" id="pgl2">
+            <af:button actionListener="#{bindings.First.execute}" text="First" disabled="#{!bindings.First.enabled}"
+                       partialSubmit="true" id="b1"/>
+            <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+            <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                       partialSubmit="true" id="b3"/>
+            <af:button actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}"
+                       partialSubmit="true" id="b4"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelFormLayout>
+    </af:panelBox>
+    <af:region value="#{bindings.emplsflow1.regionModel}" id="r1"/>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="empls_flow_empls_flow_ExecuteWithParamsPageDef"
+                Package="com.redsamurai.producer.view.pageDefs.fragments" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="EmployeesView1" RangeSize="25" DataControl="HrModuleDataControl" id="EmployeesView1Iterator"
+              Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="EmployeesView1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="jobIdVar" NDValue="#{pageFlowScope.jobIdParam}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

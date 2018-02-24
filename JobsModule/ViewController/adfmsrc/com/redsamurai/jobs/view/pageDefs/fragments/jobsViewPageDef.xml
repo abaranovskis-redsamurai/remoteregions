@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="jobsViewPageDef"
+                Package="com.redsamurai.jobs.view.pageDefs.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobsView1" RangeSize="25" DataControl="HrModuleDataControl" id="JobsView1Iterator"/>
+    <taskFlow id="emplsflow1" taskFlowId="/WEB-INF/flows/empls-flow.xml#empls-flow" activation="deferred"
+              remoteConnectionName="RemoteRegionConn" xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              Refresh="ifNeeded">
+      <parameters>
+        <parameter id="jobIdParam" value="#{bindings.JobId.inputValue}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="JobsView1Iterator" id="JobId">
+      <AttrNames>
+        <Item Value="JobId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobsView1Iterator" id="JobTitle">
+      <AttrNames>
+        <Item Value="JobTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobsView1Iterator" id="MinSalary">
+      <AttrNames>
+        <Item Value="MinSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobsView1Iterator" id="MaxSalary">
+      <AttrNames>
+        <Item Value="MaxSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="JobsView1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="JobsView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="JobsView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="JobsView1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+  </bindings>
+</pageDefinition>
